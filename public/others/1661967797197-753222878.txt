@@ -1,0 +1,76 @@
+let p = new Promise(function(res, rej) {
+  console.log("Anant");
+  res();
+});
+p.then(function(value) {
+  console.log("Raj");
+ }
+);
+
+
+output:
+
+Anant,
+Raj
+##
+
+
+let p = new Promise(function(res, rej) {
+  console.log("Anant");
+  res();
+});
+
+console.log("Hello");
+
+output:
+Anant,
+Hello
+##
+
+let p = new Promise(function(res, rej) {
+  console.log("Anant");
+  res("Kumar");
+});
+p.then(function(value) {
+  console.log("Raj");
+ }
+);
+
+
+output:
+Anant,
+Raj
+
+
+
+##
+
+ 
+let p = new Promise(function(res, rej) {
+  console.log("Anant");
+   res("Kumar");
+});
+p.then(function(value) {
+  console.log("Raj");
+  console.log(value);
+
+ }
+);
+
+
+output:
+Anant,
+Raj,
+undefined
+
+
+##
+//async api........
+setTimeout(function() {
+ console.log("Raj"):
+}, 0);
+console.log("Anant");
+
+
+Anant,
+Raj
