@@ -19,6 +19,7 @@ const storage = multer.diskStorage({
         }else{
             url ="./public/others/"
         }
+        req.fileurl = url
     cb(null, url);
   },
   filename: function (req, file, cb) {
@@ -31,9 +32,16 @@ const upload = multer({ storage: storage });
 
 
 app.post("/upload", upload.single("file"), (req, res)=>{
+    if(!req.file){
+        return  res.json({
+            msg: "please select a file"
+        })
+        
+    }
+    const absolutePath = req.fileurl.slice(9)
     res.json({
         msg:"File successfully uploaded",
-        link:req.file.path
+        link: `http://localhost:5000/` + absolutePath + req.file.filename 
     })
 });
 
